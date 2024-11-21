@@ -8,23 +8,25 @@ The idea is to have only minimal stuff installed so that you won't be lost when 
 2. Do a structured install of [`lazy.nvim`](https://lazy.folke.io/installation). This could be useful:
 ```bash
 mkdir -p ~/.config/nvim
-nvim ~/.config/nvim/init.lua
+vim ~/.config/nvim/init.lua
 
 # Fill init.lua with contents you see on the page...
 
 mkdir -p ~/.config/nvim/lua/config
-nvim ~/.config/nvim/lua/config/lazy.lua
+vim ~/.config/nvim/lua/config/lazy.lua
 
 # Fill lazy.lua with contents you see on the page...
 ```
 
-```
+```bash
 # Now, just open Neovim and install lazy.nvim:
 nvim
 
+# Ignore errors, strange theming and just press enter
+
 ## (inside Neovim) ##
 :Lazy
-<Shift + I>
+<Shift + I> and <Shift + U>
 q
 :q
 #####################
@@ -34,7 +36,7 @@ q
   - [`tpope/vim-fugitive`](https://github.com/tpope/vim-fugitive) - plugin to call Git commands from within Neovim. This kind of name is basically just a link to any Vim-compatible plugin hosted on GitHub.
 ```bash
 mkdir -p ~/.config/nvim/lua/plugins
-nvim ~/.config/nvim/lua/plugins/init.lua
+vim ~/.config/nvim/lua/plugins/init.lua
 
 # Fill init.lua with the following block...
 ```
@@ -45,7 +47,7 @@ return {
 }
 ```
 
-4. After adding a plugin to this file, do the same thing as when installing lazy.nvim: open Neovim, open lazy.nvim menu and hit `<Shift + I>`.
+4. After adding a plugin to this file, do the same thing as when installing lazy.nvim: open Neovim, open lazy.nvim menu and hit <kbd>Shift</kbd>+<kbd>I</kbd> and <kbd>Shift</kbd>+<kbd>U</kbd>.
 5. You could also install [`kvrohit/substrata.nvim`](https://github.com/kvrohit/substrata.nvim) theme. If it doesn't work properly (or you're doing this on a remote server) you should rather consider installing it on a terminal emulator side, load the specified config that is.
 6. Modify your `init.lua`:
 ```bash
@@ -57,4 +59,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 require("config.lazy")
+
+-- If you install theme to Neovim
+vim.cmd [[colorscheme substrata]]
 ```
+
+Cool, now we share the same CLI editor.
