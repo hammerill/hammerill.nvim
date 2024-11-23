@@ -60,12 +60,18 @@ nvim ~/.config/nvim/init.lua
 ```
 
 ```lua
+-- Relative numbers view
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Place 4 spaces instead of tabs
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+
+-- Load lazy.nvim modules
 require("config.lazy")
 
--- If you install theme to Neovim
+-- Apply Substrata theme
 vim.cmd [[colorscheme substrata]]
 ```
 
