@@ -53,14 +53,14 @@ vim ~/.config/nvim/lua/plugins/init.lua
 
 ```lua
 return {
-  "tpope/vim-fugitive",
-  "neovim/nvim-lspconfig",
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-nvim-lsp",
-  "lewis6991/gitsigns.nvim",
+  'tpope/vim-fugitive',
+  'neovim/nvim-lspconfig',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'lewis6991/gitsigns.nvim',
   {
-      "nvim-lualine/lualine.nvim",
-      dependencies = { "nvim-tree/nvim-web-devicons" },
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 }
 ```
