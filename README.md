@@ -28,7 +28,7 @@ vim ~/.config/nvim/lua/config/lazy.lua
 # Now, just open Neovim and install lazy.nvim:
 nvim
 
-# Ignore errors, strange theming and just press enter
+# Ignore errors, strange theming and just press Enter
 
 ## (inside Neovim) ##
 :Lazy
@@ -40,6 +40,11 @@ q
 
 3. Create plugins file and fill it with anything you want to install:
   - [`tpope/vim-fugitive`](https://github.com/tpope/vim-fugitive) - plugin to call Git commands from within Neovim. This kind of name is basically just a link to any Vim-compatible plugin hosted on GitHub.
+  - [`neovim/nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) - code analyzer for Neovim. It will show you warnings/errors in the files that use languages you configured LSP for (each one manually). It won't do auto-completion though.
+  - [`hrsh7th/nvim-cmp`](https://github.com/hrsh7th/nvim-cmp) - auto-completion plugin for Neovim. You have to provide a source for it, which we do just below. We will map the <kbd>Tab</kbd> key for it. Please note that <kbd>Tab</kbd> is the only key it will handle. All the other keys will be passed to Neovim directly.
+  - [`hrsh7th/cmp-nvim-lsp`](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP source for the auto-completion plugin. Using the code analyzer (LSP) we installed 2 lines above, it allows the auto-completion plugin to get all the data needed to show you when you're typing.
+  - [`lewis6991/gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim) - shows Git signs on the left so you know whether this line was added/modified/deleted since the last Git staging.
+  - [`nvim-lualine/lualine.nvim`](https://github.com/nvim-lualine/lualine.nvim) - instead of default Vim status bar, it shows the more advanced and good looking one.
 ```bash
 vim ~/.config/nvim/lua/plugins/init.lua
 
@@ -49,30 +54,73 @@ vim ~/.config/nvim/lua/plugins/init.lua
 ```lua
 return {
   "tpope/vim-fugitive",
+  "neovim/nvim-lspconfig",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "lewis6991/gitsigns.nvim",
+  {
+      "nvim-lualine/lualine.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }
 ```
 
 4. After adding a plugin to this file (as another string in the `return` function you've just seen), do the same thing as when installing lazy.nvim: open Neovim, open lazy.nvim menu and hit <kbd>Shift</kbd>+<kbd>I</kbd> and <kbd>Shift</kbd>+<kbd>U</kbd>.
 5. You could also install [`kvrohit/substrata.nvim`](https://github.com/kvrohit/substrata.nvim) theme. If it doesn't work properly (or you're doing this on a remote server) you should rather consider installing it on a terminal emulator side, load the specified config that is.
-6. Modify your `init.lua`:
+6. Modify your `init.lua` (pay attention to the "if installed" line):
 ```bash
 nvim ~/.config/nvim/init.lua
 ```
 
 ```lua
+-- Place 4 spaces instead of tabs
+-- (do `:set shiftwidth=2` if you need to change amount of spaces)
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+
 -- Relative numbers view
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Place 4 spaces instead of tabs
-vim.opt.shiftwidth = 4
-vim.opt.smarttab = true
-
 -- Load lazy.nvim modules
-require("config.lazy")
+require('config.lazy')
 
 -- Apply Substrata theme
+-- (if installed)
 vim.cmd [[colorscheme substrata]]
+
+-- Load autocompletion plugin
+local cmp = require'cmp'
+cmp.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  },
+  mapping = {
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+	cmp.select_next_item()
+      else
+	fallback()
+      end
+    end
+  }
+}
+
+-- Load LSP code analysis
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+--- Clang
+require'lspconfig'.clangd.setup{
+  capabilities = capabilities,
+}
+
+-- Load lualine status bar
+require('lualine').setup{
+  options = { theme = require'lualine.themes.ayu_mirage' },
+}
+
+-- Load Git signs on the left
+require('gitsigns').setup()
 ```
 
 Cool, now we share the same CLI editor.
