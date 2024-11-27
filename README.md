@@ -40,11 +40,12 @@ q
 
 3. Create plugins file and fill it with anything you want to install:
   - [`tpope/vim-fugitive`](https://github.com/tpope/vim-fugitive) - plugin to call Git commands from within Neovim. This kind of name is basically just a link to any Vim-compatible plugin hosted on GitHub.
-  - [`neovim/nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) - code analyzer for Neovim. It will show you warnings/errors in the files that use languages you configured LSP for (each one manually). It won't do auto-completion though.
+  - [`neovim/nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) - code analyzer for Neovim. It will show you warnings/errors in the files that use languages you configured LSP for (each one manually). It won't do auto-completion though. Install language analyzers for each language you want to support (such as Clang for C/C++ (even if GCC is used) and PyLSP for Python) and add them to nvim/init.lua as shown below.
   - [`hrsh7th/nvim-cmp`](https://github.com/hrsh7th/nvim-cmp) - auto-completion plugin for Neovim. You have to provide a source for it, which we do just below. We will map the <kbd>Tab</kbd> key for it. Please note that <kbd>Tab</kbd> is the only key it will handle. All the other keys will be passed to Neovim directly.
   - [`hrsh7th/cmp-nvim-lsp`](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP source for the auto-completion plugin. Using the code analyzer (LSP) we installed 2 lines above, it allows the auto-completion plugin to get all the data needed to show you when you're typing.
   - [`lewis6991/gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim) - shows Git signs on the left so you know whether this line was added/modified/deleted since the last Git staging.
   - [`nvim-lualine/lualine.nvim`](https://github.com/nvim-lualine/lualine.nvim) - instead of default Vim status bar, it shows the more advanced and good looking one.
+  - [`nvim-telescope/telescope.nvim`](https://github.com/nvim-telescope/telescope.nvim) - powerful file selector you can use with <kbd>Space</kbd>+<kbd>ff</kbd> (search for files in the project), <kbd>Space</kbd>+<kbd>fb</kbd> (switch between last loaded files) or <kbd>Space</kbd>+<kbd>fg</kbd> (search for text inside the files in the project). Don't forget to install the `ripgrep`.
 ```bash
 vim ~/.config/nvim/lua/plugins/init.lua
 
@@ -61,6 +62,10 @@ return {
   {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  {
+      'nvim-telescope/telescope.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim' },
   },
 }
 ```
@@ -109,8 +114,13 @@ cmp.setup {
 -- Load LSP code analysis
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
---- Clang
+--- C/C++
 require'lspconfig'.clangd.setup{
+  capabilities = capabilities,
+}
+
+--- Python
+require'lspconfig'.pylsp.setup{
   capabilities = capabilities,
 }
 
@@ -121,6 +131,13 @@ require('lualine').setup{
 
 -- Load Git signs on the left
 require('gitsigns').setup()
+
+-- Load Telescope file navigator
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 ```
 
 Cool, now we share the same CLI editor.
