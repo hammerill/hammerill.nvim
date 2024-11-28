@@ -71,7 +71,7 @@ return {
 ```
 
 4. After adding a plugin to this file (as another string in the `return` function you've just seen), do the same thing as when installing lazy.nvim: open Neovim, open lazy.nvim menu and hit <kbd>Shift</kbd>+<kbd>I</kbd> and <kbd>Shift</kbd>+<kbd>U</kbd>.
-5. You could also install [`kvrohit/substrata.nvim`](https://github.com/kvrohit/substrata.nvim) theme (`'lewis6991/gitsigns.nvim',`). If it doesn't work properly (or you're doing this on a remote server) you should rather consider installing it on a terminal emulator side, load the specified config that is.
+5. You could also install [`kvrohit/substrata.nvim`](https://github.com/kvrohit/substrata.nvim) theme (`'kvrohit/substrata.nvim',`). If it doesn't work properly (or you're doing this on a remote server) you should rather consider installing it on a terminal emulator side, load the specified config that is.
 6. You'll need to have a [NerdFont](https://www.nerdfonts.com/) in order to have lualine.nvim working. Install one of these on your system (my personal favorite is [Cascadia Code](https://github.com/microsoft/cascadia-code)) and set it as the font of your terminal profile.
 7. Modify your `init.lua` (pay attention to the "if installed" line):
 ```bash
