@@ -145,4 +145,9 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 ```
 
+8. Additionally disable auto-update check on launch (it annoys me as hell):
+```bash
+sed -i -r -e 's/checker = \{ enabled = true \}/checker = { enabled = true, notify = false }/' ~/.config/nvim/lua/config/lazy.lua
+```
+
 Cool, now we share the same CLI editor.
