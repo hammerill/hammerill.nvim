@@ -88,6 +88,10 @@ vim.opt.smarttab = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Center screen while scrolling pages up/down
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
 -- Load lazy.nvim modules
 require('config.lazy')
 
