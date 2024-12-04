@@ -28,7 +28,7 @@ vim ~/.config/nvim/lua/config/lazy.lua
 # Now, just open Neovim and install lazy.nvim:
 nvim
 
-# Ignore errors, strange theming and just press Enter
+# Ignore errors and strange theming and just press Enter
 
 ## (inside Neovim) ##
 :Lazy
@@ -40,7 +40,8 @@ q
 
 3. Create plugins file and fill it with anything you want to install:
   - [`tpope/vim-fugitive`](https://github.com/tpope/vim-fugitive) - plugin to call Git commands from within Neovim. This kind of name is basically just a link to any Vim-compatible plugin hosted on GitHub.
-  - [`neovim/nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) - code analyzer for Neovim. It will show you warnings/errors in the files that use languages you configured LSP for (each one manually). It won't do auto-completion though. Install language analyzers for each language you want to support (such as Clang for C/C++ (even if GCC is used) and PyLSP for Python) and add them to nvim/init.lua as shown below.
+  - [`nvim-treesitter/nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter) - syntax highlighter for Neovim. Basic Neovim does highlight by default, but this plugin does that semantically.
+  - [`neovim/nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) - code analyzer for Neovim. It will show you warnings/errors in the files that use languages you configured LSP for (each one manually). It won't do auto-completion though. Install language analyzers for each language you want to support (such as Clang for C/C++ (even if GCC is used) and Pyright for Python) and add them to nvim/init.lua as shown below.
   - [`hrsh7th/nvim-cmp`](https://github.com/hrsh7th/nvim-cmp) - auto-completion plugin for Neovim. You have to provide a source for it, which we do just below. We will map the <kbd>Tab</kbd> key for it. Please note that <kbd>Tab</kbd> is the only key it will handle. All the other keys will be passed to Neovim directly.
   - [`hrsh7th/cmp-nvim-lsp`](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP source for the auto-completion plugin. Using the code analyzer (LSP) we installed 2 lines above, it allows the auto-completion plugin to get all the data needed to show you when you're typing.
   - [`lewis6991/gitsigns.nvim`](https://github.com/lewis6991/gitsigns.nvim) - shows Git signs on the left so you know whether this line was added/modified/deleted since the last Git staging.
@@ -55,6 +56,7 @@ vim ~/.config/nvim/lua/plugins/init.lua
 ```lua
 return {
   'tpope/vim-fugitive',
+  'nvim-treesitter/nvim-treesitter',
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
@@ -125,8 +127,20 @@ require'lspconfig'.clangd.setup{
 }
 
 --- Python
-require'lspconfig'.pylsp.setup{
+require'lspconfig'.pyright.setup{
   capabilities = capabilities,
+}
+
+-- Load Treesitter syntax highlighter
+require'nvim-treesitter.configs'.setup{
+  ensure_installed = {
+    'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline',
+    'cpp', 'cmake', 'javascript', 'typescript', 'python'
+  },
+
+  highlight = {
+    enable = true,
+  },
 }
 
 -- Load lualine status bar
@@ -145,7 +159,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 ```
 
-8. Additionally disable auto-update check on launch (it annoys me as hell):
+8. Additionally disable `lazy.nvim` auto-update check on launch (it annoys me as hell):
 ```bash
 sed -i -r -e 's/checker = \{ enabled = true \}/checker = { enabled = true, notify = false }/' ~/.config/nvim/lua/config/lazy.lua
 ```
