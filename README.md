@@ -131,6 +131,11 @@ require'lspconfig'.pyright.setup{
   capabilities = capabilities,
 }
 
+--- JS/TS
+require'lspconfig'.ts_ls.setup{
+  capabilities = capabilities,
+}
+
 -- Load Treesitter syntax highlighter
 require'nvim-treesitter.configs'.setup{
   ensure_installed = {
@@ -162,6 +167,18 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 8. Additionally disable `lazy.nvim` auto-update check on launch (it annoys me as hell):
 ```bash
 sed -i -r -e 's/checker = \{ enabled = true \}/checker = { enabled = true, notify = false }/' ~/.config/nvim/lua/config/lazy.lua
+```
+
+9. Install language servers for C/C++, Python and JS/TS:
+```bash
+# Clang (C/C++)
+your_pkg_manager install clang
+
+# Pyright (Python)
+your_pkg_manager install pyright
+
+# TypeScript Language Server (JS/TS)
+npm install -g typescript typescript-language-server
 ```
 
 Cool, now we share the same CLI editor.
