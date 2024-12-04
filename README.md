@@ -162,6 +162,9 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+-- Hotkeys for the LSP
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'LSP rename a symbol' })
 ```
 
 8. Additionally disable `lazy.nvim` auto-update check on launch (it annoys me as hell):
