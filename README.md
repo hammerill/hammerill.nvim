@@ -110,11 +110,18 @@ cmp.setup {
   mapping = {
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
-	cmp.select_next_item()
+        cmp.select_next_item()
       else
-	fallback()
+        fallback()
       end
-    end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
   }
 }
 
@@ -136,11 +143,16 @@ require'lspconfig'.ts_ls.setup{
   capabilities = capabilities,
 }
 
+--- Tailwind CSS
+require'lspconfig'.tailwindcss.setup{
+  capabilities = capabilities,
+}
+
 -- Load Treesitter syntax highlighter
 require'nvim-treesitter.configs'.setup{
   ensure_installed = {
     'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'markdown_inline',
-    'cpp', 'cmake', 'javascript', 'typescript', 'python'
+    'cpp', 'cmake', 'python', 'html', 'css', 'javascript', 'typescript'
   },
 
   highlight = {
@@ -172,7 +184,7 @@ vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'LSP rename a sym
 sed -i -r -e 's/checker = \{ enabled = true \}/checker = { enabled = true, notify = false }/' ~/.config/nvim/lua/config/lazy.lua
 ```
 
-9. Install language servers for C/C++, Python and JS/TS:
+9. Install language servers for C/C++, Python, JS/TS and Tailwind CSS:
 ```bash
 # Clang (C/C++)
 your_pkg_manager install clang
@@ -182,6 +194,9 @@ your_pkg_manager install pyright
 
 # TypeScript Language Server (JS/TS)
 npm install -g typescript typescript-language-server
+
+# Tailwind CSS
+npm install -g @tailwindcss/language-server
 ```
 
 Cool, now we share the same CLI editor.
