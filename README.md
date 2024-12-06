@@ -61,6 +61,7 @@ return {
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
   'lewis6991/gitsigns.nvim',
+  'kvrohit/substrata.nvim',
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -73,9 +74,8 @@ return {
 ```
 
 4. After adding a plugin to this file (as another string in the `return` function you've just seen), do the same thing as when installing lazy.nvim: open Neovim, open lazy.nvim menu and hit <kbd>Shift</kbd>+<kbd>I</kbd> and <kbd>Shift</kbd>+<kbd>U</kbd>.
-5. You could also install [`kvrohit/substrata.nvim`](https://github.com/kvrohit/substrata.nvim) theme (`'kvrohit/substrata.nvim',`). If it doesn't work properly (or you're doing this on a remote server) you should rather consider installing it on a terminal emulator side, load the specified config that is.
-6. You'll need to have a [NerdFont](https://www.nerdfonts.com/) in order to have lualine.nvim working. Install one of these on your system (my personal favorite is [Cascadia Code](https://github.com/microsoft/cascadia-code)) and set it as the font of your terminal profile.
-7. Modify your `init.lua` (pay attention to the "if installed" line):
+5. You'll need to have a [NerdFont](https://www.nerdfonts.com/) in order to have lualine.nvim working. Install one of these on your system (my personal favorite is [Cascadia Code](https://github.com/microsoft/cascadia-code)) and set it as the font of your terminal profile.
+6. Modify your `init.lua` (pay attention to the "if installed" line):
 ```bash
 nvim ~/.config/nvim/init.lua
 ```
@@ -98,7 +98,6 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 require('config.lazy')
 
 -- Apply Substrata theme
--- (if installed)
 vim.cmd [[colorscheme substrata]]
 
 -- Load autocompletion plugin
@@ -179,12 +178,12 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = 'LSP rename a symbol' })
 ```
 
-8. Additionally disable `lazy.nvim` auto-update check on launch (it annoys me as hell):
+7. Additionally disable `lazy.nvim` auto-update check on launch (it annoys me as hell):
 ```bash
 sed -i -r -e 's/checker = \{ enabled = true \}/checker = { enabled = true, notify = false }/' ~/.config/nvim/lua/config/lazy.lua
 ```
 
-9. Install language servers for C/C++, Python, JS/TS and Tailwind CSS:
+8. Install language servers for C/C++, Python, JS/TS and Tailwind CSS:
 ```bash
 # Clang (C/C++)
 your_pkg_manager install clang
