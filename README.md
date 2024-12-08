@@ -7,7 +7,7 @@ The idea is to have only minimal stuff installed so that you won't be lost when 
 Click [here](./legacy/README.md) to access the comprehensive guide of the installation of this config (probably outdated version) in the old way.
 
 At the time, this repo was a single readme file guiding you through setting up your package manager yourself and adding your configs in the config files.
-When this config became bigger, it was a pain the ass to update the config online AND on all the instances I've installed Neovim to.
+When this config became bigger, it was a pain in the ass to update the config online AND on all the instances I've installed Neovim to.
 Coming up with an idea that this repo must replace the whole Neovim config dir isn't innovative but solves drastically the syncing problem.
 
 But still, I leave the old guide-like readme for ya and for the educating purposes.
@@ -52,3 +52,14 @@ q
 ```
 
 Cool, now we share the same CLI editor.
+
+## Keymaps
+Important thing to note are the keymaps that this config assignes.
+
+Take a look at the [keymaps file](./lua/user/keymaps.lua) to see all the hotkeys you can use.
+
+For example, this:
+```lua
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP rename a symbol" })
+```
+...means that you can do a <kbd>Space</kbd>+<kbd>lr</kbd> to ask your LSP to rename a certain variable/class/etc.
