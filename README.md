@@ -51,11 +51,6 @@ q
 #####################
 ```
 
-5. Additionally disable `lazy.nvim` auto-update check on launch (it annoys me as hell):
-```bash
-sed -i -r -e 's/checker = \{ enabled = true \}/checker = { enabled = true, notify = false }/' ~/.config/nvim/lua/config/lazy.lua
-```
-
 Cool, now we share the same CLI editor.
 
 ## Keymaps
