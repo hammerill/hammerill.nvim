@@ -37,7 +37,8 @@ npm install -g @tailwindcss/language-server
 git clone https://github.com/hammerill/hammerill.nvim ~/.config/nvim
 ```
 
-4. Now, just open Neovim and install package manager with all its packages:
+4. You'll need to have a [NerdFont](https://www.nerdfonts.com/) in order to have lualine.nvim working. Install one of these on your system (my personal favorite is [Cascadia Code](https://github.com/microsoft/cascadia-code)) and set it as the font of your terminal profile.
+5. Now, just open Neovim and install package manager with all its packages (you might not need to launch all of that and do Shift keys yourself, but you'll know how to update plugins):
 ```bash
 nvim
 
