@@ -34,7 +34,7 @@ npm install -g @tailwindcss/language-server
 
 3. Clone this repo to your Neovim config folder:
 ```bash
-git clone --depth=1 https://github.com/hammerill/hammerill.nvim ~/.config/nvim
+git clone https://github.com/hammerill/hammerill.nvim ~/.config/nvim
 ```
 
 4. Now, just open Neovim and install package manager with all its packages:
