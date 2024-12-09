@@ -24,3 +24,9 @@ lsp.ts_ls.setup({
 lsp.tailwindcss.setup({
   capabilities = cmp_source,
 })
+
+-- PHP
+lsp.intelephense.setup({
+  capabilities = cmp_source,
+})
+
