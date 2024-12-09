@@ -63,4 +63,4 @@ For example, this:
 ```lua
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP rename a symbol" })
 ```
-...means that you can do a <kbd>Space</kbd>+<kbd>lr</kbd> to ask your LSP to rename a certain variable/class/etc.
+...means that you can do a <kbd>Space</kbd>+<kbd>lr</kbd> to ask your LSP server to rename a certain variable/class/etc.
