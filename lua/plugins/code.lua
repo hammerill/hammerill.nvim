@@ -10,4 +10,8 @@ return {
     "nvim-telescope/telescope.nvim",			-- File selector
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  {
+    "nvim-tree/nvim-tree.lua",				-- File tree on the left
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }

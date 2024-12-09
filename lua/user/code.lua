@@ -7,6 +7,9 @@
 -- Load Git signs on the left
 require("gitsigns").setup()
 
+-- Load file tree on the left
+require("nvim-tree").setup()
+
 -- Load Treesitter syntax highlighter
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
