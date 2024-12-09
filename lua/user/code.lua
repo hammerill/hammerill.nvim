@@ -11,7 +11,7 @@ require("gitsigns").setup()
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
-    "cpp", "cmake", "python", "html", "css", "javascript", "typescript",
+    "bash", "cpp", "cmake", "python", "html", "css", "javascript", "typescript",
   },
   highlight = {
     enable = true,
