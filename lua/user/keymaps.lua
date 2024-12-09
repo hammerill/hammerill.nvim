@@ -1,4 +1,4 @@
--- @brief Keymaps user config for hammerill.nvim
+-- ebrief Keymaps user config for hammerill.nvim
 --
 -- Assumes the plugin manager was loaded.
 
@@ -15,3 +15,29 @@ vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find
 vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+
+-- Define the object containing methods to export
+local exported = {}
+
+-- Export autocompletion plugin mappings
+function exported.exportCmpMappings(cmp)
+  return {
+    ["<Tab>"] = function(fallback)
+      if cmp.visible() then
+	cmp.select_next_item()
+      else
+	fallback()
+      end
+    end,
+    ["<S-Tab>"] = function(fallback)
+      if cmp.visible() then
+	cmp.select_prev_item()
+      else
+	fallback()
+      end
+    end,
+  }
+end
+
+-- Export the defined object
+return exported

@@ -21,24 +21,11 @@ require("nvim-treesitter.configs").setup({
 -- Load autocompletion plugin
 -- (assuming LSP source was configured elsewhere)
 local cmp = require("cmp")
+local keymaps = require("user.keymaps")
+
 cmp.setup({
   sources = {
     { name = "nvim_lsp" }
   },
-  mapping = {
-    ["<Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
-    ["<S-Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,
-  }
+  mapping = keymaps.exportCmpMappings(cmp),
 })
