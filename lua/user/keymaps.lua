@@ -3,8 +3,8 @@
 -- Assumes the plugin manager was loaded.
 
 -- Editor keymaps
-vim.keymap.set("n", "<C-u>", "<C-u>zt", { desc = "Keep cursor at top when scroll up" })
-vim.keymap.set("n", "<C-d>", "<C-d>zt", { desc = "Keep cursor at top when scroll down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Keep cursor in center when scroll up" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in center when scroll down" })
 
 -- LSP keymaps
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP rename a symbol" })
