@@ -32,16 +32,16 @@ function exported.exportCmpMapping(cmp)
   return {
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
-	cmp.select_next_item()
+        cmp.select_next_item()
       else
-	fallback()
+        fallback()
       end
     end,
     ["<S-Tab>"] = function(fallback)
       if cmp.visible() then
-	cmp.select_prev_item()
+        cmp.select_prev_item()
       else
-	fallback()
+        fallback()
       end
     end,
   }

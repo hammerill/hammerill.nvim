@@ -5,6 +5,10 @@
 -- Place 4 spaces instead of tabs
 -- (do `:set shiftwidth=2` if you need to change amount of spaces)
 vim.opt.shiftwidth = 4
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 0
+
+vim.opt.expandtab = true
 vim.opt.smarttab = true
 
 -- Relative numbers view
