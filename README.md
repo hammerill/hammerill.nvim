@@ -24,6 +24,8 @@ your_pkg_manager install clang
 
 # Pyright (Python)
 your_pkg_manager install pyright
+## or
+pip install pyright
 
 # TypeScript Language Server (JS/TS)
 npm install -g typescript typescript-language-server
