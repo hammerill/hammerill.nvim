@@ -1,4 +1,4 @@
--- ebrief Keymaps user config for hammerill.nvim
+-- @brief Keymaps user config for hammerill.nvim
 --
 -- Assumes the plugin manager was loaded.
 
