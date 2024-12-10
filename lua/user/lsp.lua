@@ -5,6 +5,11 @@
 local lsp = require("lspconfig")
 local cmp_source = require("cmp_nvim_lsp").default_capabilities()
 
+-- Bash
+lsp.bashls.setup({
+  capabilities = cmp_source,
+})
+
 -- C/C++
 lsp.clangd.setup({
   capabilities = cmp_source,

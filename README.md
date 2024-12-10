@@ -19,6 +19,11 @@ But still, I leave the old guide-like readme for ya and for the educating purpos
 # Required for Telescope
 your_pkg_manager install ripgrep
 
+# Bash
+your_pkg_manager install bash-language-server
+## or
+npm install -g bash-language-server
+
 # Clang (C/C++)
 your_pkg_manager install clang
 
