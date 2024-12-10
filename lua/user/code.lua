@@ -30,5 +30,5 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp" }
   },
-  mapping = keymaps.exportCmpMappings(cmp),
+  mapping = keymaps.exportCmpMapping(cmp),
 })

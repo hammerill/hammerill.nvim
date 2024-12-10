@@ -27,8 +27,8 @@ vim.keymap.set("n", "<leader>tr", tree.reload, { desc = "File tree reload" })
 -- Define the object containing methods to export
 local exported = {}
 
--- Export autocompletion plugin mappings
-function exported.exportCmpMappings(cmp)
+-- Export autocompletion plugin mapping
+function exported.exportCmpMapping(cmp)
   return {
     ["<Tab>"] = function(fallback)
       if cmp.visible() then
