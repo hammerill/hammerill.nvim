@@ -6,6 +6,9 @@
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Keep cursor in center when scroll up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in center when scroll down" })
 
+vim.keymap.set("n", "n", "nzz", { desc = "Keep cursor in center when search next" })
+vim.keymap.set("n", "N", "Nzz", { desc = "Keep cursor in center when search prev" })
+
 -- LSP keymaps
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP rename a symbol" })
 
