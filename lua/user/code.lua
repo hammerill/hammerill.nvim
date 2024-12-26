@@ -28,7 +28,7 @@ local keymaps = require("user.keymaps")
 
 cmp.setup({
   sources = {
-    { name = "nvim_lsp" }
+    { name = "nvim_lsp" },
   },
   mapping = keymaps.exportCmpMapping(cmp),
 })

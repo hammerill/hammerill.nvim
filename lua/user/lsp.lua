@@ -29,8 +29,3 @@ lsp.ts_ls.setup({
 lsp.tailwindcss.setup({
   capabilities = cmp_source,
 })
-
--- PHP
-lsp.phpactor.setup({
-  capabilities = cmp_source,
-})

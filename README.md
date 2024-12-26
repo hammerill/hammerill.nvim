@@ -37,9 +37,6 @@ npm install -g typescript typescript-language-server
 
 # Tailwind CSS
 npm install -g @tailwindcss/language-server
-
-# Intelephense (PHP)
-npm install -g intelephense
 ```
 
 3. Clone this repo to your Neovim config folder:
