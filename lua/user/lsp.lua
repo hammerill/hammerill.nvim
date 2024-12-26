@@ -31,7 +31,6 @@ lsp.tailwindcss.setup({
 })
 
 -- PHP
-lsp.intelephense.setup({
+lsp.phpactor.setup({
   capabilities = cmp_source,
 })
-
