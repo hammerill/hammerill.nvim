@@ -19,6 +19,9 @@ But still, I leave the old guide-like readme for ya and for the educating purpos
 # Required for Telescope
 your_pkg_manager install ripgrep
 
+# Needed for system copy/paste
+your_pkg_manager install wl-clipboard # For Wayland. `xclip` for X11
+
 # Bash
 your_pkg_manager install bash-language-server
 ## or
