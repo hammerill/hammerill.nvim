@@ -2,30 +2,34 @@
 --
 -- Assumes the plugin manager was loaded.
 
-local lsp = require("lspconfig")
 local cmp_source = require("cmp_nvim_lsp").default_capabilities()
 
--- Bash
-lsp.bashls.setup({
+-- Define LSP server configurations
+vim.lsp.config("bashls", {
   capabilities = cmp_source,
 })
 
--- C/C++
-lsp.clangd.setup({
+vim.lsp.config("clangd", {
   capabilities = cmp_source,
 })
 
--- Python
-lsp.pyright.setup({
+vim.lsp.config("pyright", {
   capabilities = cmp_source,
 })
 
--- JS/TS
-lsp.ts_ls.setup({
+vim.lsp.config("ts_ls", {
   capabilities = cmp_source,
 })
 
--- Tailwind CSS
-lsp.tailwindcss.setup({
+vim.lsp.config("tailwindcss", {
   capabilities = cmp_source,
+})
+
+-- Enable all configured servers
+vim.lsp.enable({
+  "bashls",
+  "clangd",
+  "pyright",
+  "ts_ls",
+  "tailwindcss",
 })
