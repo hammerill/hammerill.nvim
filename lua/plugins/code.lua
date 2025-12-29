@@ -2,7 +2,10 @@
 
 return {
   "hrsh7th/nvim-cmp",                                   -- Autocompletion
-  "nvim-treesitter/nvim-treesitter",                    -- Semantic syntax highlighting
+  {
+    "nvim-treesitter/nvim-treesitter",                  -- Semantic syntax highlighting
+    branch = "master",
+  },
   "tpope/vim-fugitive",                                 -- Git commands from editor
   "lewis6991/gitsigns.nvim",                            -- Git signs on the left
   "ThePrimeagen/vim-be-good",                           -- Learn Vim game
