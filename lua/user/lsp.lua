@@ -15,6 +15,16 @@ vim.lsp.config("clangd", {
 
 vim.lsp.config("pyright", {
   capabilities = cmp_source,
+
+  settings = {
+    python = {
+      analysis = {
+        diagnosticSeverityOverrides = {
+          reportArgumentType = "none",
+        },
+      },
+    },
+  },
 })
 
 vim.lsp.config("ts_ls", {
