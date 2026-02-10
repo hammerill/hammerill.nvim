@@ -21,6 +21,7 @@ vim.lsp.config("pyright", {
       analysis = {
         diagnosticSeverityOverrides = {
           reportArgumentType = "none",
+          reportAssignmentType = "none",
           reportAttributeAccessIssue = "none",
         },
       },
