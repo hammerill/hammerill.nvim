@@ -49,21 +49,12 @@ npm install -g @tailwindcss/language-server
 git clone https://github.com/hammerill/hammerill.nvim ~/.config/nvim
 ```
 
-4. You'll need a [NerdFont](https://www.nerdfonts.com/) in order to have lualine.nvim working. Install one of these on your system (my personal favorites are [Cascadia Mono NF](https://github.com/microsoft/cascadia-code)) and [JetBrains Mono NF](https://www.jetbrains.com/lp/mono/), installed by default in Ghostty) and set it as the font of your terminal profile.
+4. You'll need a [NerdFont](https://www.nerdfonts.com/) in order to have `lualine.nvim` plugin working. Install one of these on your system (my personal favorites are [Cascadia Mono NF](https://github.com/microsoft/cascadia-code) and [JetBrains Mono NF](https://www.jetbrains.com/lp/mono/) which is installed by default in [Ghostty](https://ghostty.org/)) and set it as the font of your terminal profile.
 
-5. Now, just open Neovim and install package manager with all its packages (you might not need to launch all of that and do Shift keys yourself, but you'll know how to update plugins):
+5. Now, install packages in Neovim:
 
 ```bash
-nvim
-
-# Ignore errors and strange theming and just press Enter
-
-## (inside Neovim) ##
-:Lazy
-<Shift + I> and <Shift + U>
-q
-:q
-#####################
+nvim --headless "+Lazy! sync" +qa
 ```
 
 Cool, now we share the same CLI editor.
